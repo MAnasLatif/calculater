@@ -1,0 +1,435 @@
+/* font-family: 'Montserrat', sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* root color variabial */
+
+:root {
+    --skin-dark: #6f42c1;
+    --skin-mute: #8c68cd;
+    --skin-light: #a98eda;
+    --text-dark: #27242c;
+    --text-mute: #888888;
+    --text-light: #ffffff;
+    --bg-full-dark: #111418;
+    --bg-mute-dark: #191b1d;
+    --bg-light-dark: #272b30;
+    --bg-full-light: #ffffff;
+    --bg-mute-light: #fafafa;
+    --bg-light-light: #eff0f2;
+    --skin-1: var(--skin-dark);
+    --skin-2: var(--skin-mute);
+    --skin-3: var(--skin-light);
+    --skin-4: var(--skin-t);
+    --text-1: var(--text-dark);
+    --text-2: var(--text-mute);
+    --text-3: var(--text-light);
+    --bg-1: var(--bg-full-light);
+    --bg-2: var(--bg-mute-light);
+    --bg-3: var(--bg-light-light);
+    --box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    --text-shadow: 0px 0px 8px var(--bg-full-light);
+}
+
+
+/* root color variabial in dark mode */
+
+body.dark {
+    --skin-1: var(--skin-light);
+    --skin-2: var(--skin-dark);
+    --text-1: var(--text-light);
+    --text-3: var(--text-dark);
+    --bg-1: var(--bg-full-dark);
+    --bg-2: var(--bg-mute-dark);
+    --bg-3: var(--bg-light-dark);
+    --text-shadow: 0px 0px 8px var(--bg-full-dark);
+}
+
+
+/* sidebar style  */
+
+ ::after,
+ ::before {
+    box-sizing: border-box;
+}
+
+ ::-webkit-scrollbar {
+    width: 10px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: var(--skin-light);
+    border-radius: 8px;
+}
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--bg-3);
+}
+
+
+/* default style for all Element  */
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-2);
+    color: var(--text-1);
+    font-family: 'Montserrat', sans-serif;
+}
+
+body:after {
+    content: '';
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(var(--skin-1) 0.5px, var(--bg-1) 0.5px), radial-gradient(var(--skin-1) -0.5px, var(--bg-1) 0.5px);
+    background-size: 15px 15px;
+    background-position: 0 0, 7px 7px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-1);
+    display: inline-block;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inner {
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+/* ======= start style header ======= */
+
+header .inner {
+    position: relative;
+    padding: 10px;
+}
+
+header menu {
+    display: flex;
+    justify-content: right;
+}
+
+header button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+}
+
+header .themebtn svg {
+    fill: var(--text-1);
+}
+
+header .themebtn .moon {
+    display: block;
+}
+
+header .themebtn .sun {
+    display: none;
+}
+
+body.dark .themebtn .moon {
+    display: none;
+}
+
+body.dark .themebtn .sun {
+    display: block;
+}
+
+
+/* menu style */
+
+header button {
+    position: relative;
+    z-index: 100;
+}
+
+header .menubtn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-1);
+    position: relative;
+    transition: .3s;
+}
+
+header .menubtn span::after,
+header .menubtn span::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: var(--text-1);
+    position: absolute;
+    right: 0;
+    transition: .3s;
+}
+
+header .menubtn span::after {
+    top: 7px;
+}
+
+header .menubtn span::before {
+    bottom: 7px;
+}
+
+body.menuopne header .menubtn span::after {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+body.menuopne header .menubtn span::before {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+
+body.menuopne .menubtn span {
+    background-color: transparent;
+}
+
+
+/* Navbar */
+
+nav {
+    position: fixed;
+    top: -110vh;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top .5s;
+}
+
+body.menuopne nav {
+    top: 0;
+}
+
+nav::after {
+    content: '';
+    position: fixed;
+    top: -110%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--bg-2);
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+body.menuopne nav::after {
+    opacity: .8;
+    top: 0;
+}
+
+nav .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .stu {
+    margin: 10px;
+    width: 30%;
+    max-width: 200PX;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+nav .img {
+    overflow: hidden;
+    width: 100%;
+    border: 5px solid var(--bg-1);
+    border-radius: 50%;
+}
+
+nav img {
+    max-width: 100%;
+}
+
+nav h1 {
+    text-align: center;
+    font-size: 20px;
+}
+
+nav h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+nav a {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: var(--skin-2);
+    border-radius: 10px;
+    color: var(--text-light);
+}
+
+@media screen and (max-width: 650px) {
+    nav .inner {
+        flex-direction: column;
+    }
+    nav .stu {
+        margin: 30px;
+        width: 100%;
+    }
+}
+
+
+/* ======= End style header ======= */
+
+
+/* ======= start style main ======= */
+
+section.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main .calculater {
+    position: relative;
+    padding: 10px;
+    border: 1px solid var(--text-2);
+    border-radius: 7px;
+    width: 350px;
+    box-shadow: var(--box-shadow);
+    margin: 10px;
+}
+
+.main .calculater::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(45deg, var(--bg-2) 50%, var(--bg-1) 50%);
+    background-size: 10px 10px;
+    background-attachment: fixed;
+}
+
+.main .calculater input {
+    padding: 0 5px;
+    text-align: right;
+    font-size: 30px;
+    width: 100%;
+    border: 1px solid var(--text-2);
+    color: var(--text-1);
+    background-color: var(--bg-1);
+    height: 70px;
+}
+
+.main .keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    margin: 10px 0;
+}
+
+.main .keypad button {
+    padding: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid var(--text-2);
+    box-shadow: var(--box-shadow);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    color: var(--text-1);
+    user-select: none;
+}
+
+.main .keypad button.advance {
+    font-size: 15px;
+    border: 1px solid var(--text-2);
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.main .keypad button:hover {
+    background-color: var(--bg-1);
+    box-shadow: none;
+}
+
+.main .keypad button.equal {
+    background-color: var(--skin-2);
+    color: var(--text-light);
+}
+
+.main .keypad button.equal:hover {
+    background-color: var(--skin-1);
+}
+
+
+/* ======= end style main ======= */
+
+
+/* ========== footer style Start ========= */
+
+footer {
+    padding: 20px;
+}
+
+footer p.copyright-area {
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    color: var(--text-1);
+}
+
+footer p.copyright-area a {
+    color: var(--skin-1);
+}
+
+footer p.copyright-area a:hover {
+    text-decoration: underline
+}
+
+@media screen and (max-width: 320px) {
+    footer {
+        padding: 10px;
+    }
+    footer p.copyright-area {
+        font-size: 12px;
+    }
+}
+
+
+/* ========== footer style end ========= */
