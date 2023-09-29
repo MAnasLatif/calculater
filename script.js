@@ -28,16 +28,6 @@ function chengtoggle() {
     }
 }
 
-/* ----------- Menu Button Selection ----------- */
-
-function menu() {
-    if (document.body.classList.contains("menuopne")) {
-        document.body.classList.remove("menuopne");
-    } else {
-        document.body.classList.add("menuopne");
-    }
-}
-
 /* ----------- calculater Selection ----------- */
 
 let screen = document.getElementById('screen');
